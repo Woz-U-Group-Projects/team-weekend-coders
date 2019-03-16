@@ -3,6 +3,8 @@ const app = express();
 const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 
 const routes = require('./routes/leads');
 const rIndex = require('./routes/routesIndex');
@@ -18,6 +20,8 @@ mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors({origin: 'http://localhost:4200'}));
+
 
 routes(app);
 rIndex(app);

@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+
+            <!-- Submit new lead form -->
+            <form #leadForm="ngForm" (ngSubmit)="onSubmit(leadForm)">
+              <input name="LeadOwner" #LeadOwner="ngModel" [(ngModel)]="leadService.selectedLead.LeadOwner" required>
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="First Name" id="firstName" type="text" name="firstName" #firstName="ngModel"
+                    [(ngModel)]="leadService.selectedLead.firstName" required>
+                  <label for="firstName">First Name</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input placeholder="Last Name" id="lastName" type="text" name="lastName" #lastName="ngModel"
+                    [(ngModel)]="leadService.selectedLead.lastName" required>
+                  <label for="lastName">Last Name</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Phone Number" id="mobileName" type="number" name="mobileNumber" #mobileNumber="ngModel"
+                    [(ngModel)]="leadService.selectedLead.mobileNumber" required>
+                  <label for="mobileNumber">Phone Number</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input placeholder="Email" id="email" type="text" name="email" #email="ngModel" [(ngModel)]="leadService.selectedLead.email"
+                    required>
+                  <label for="email">Email</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Lead Source" id="leadSource" type="text" name="leadSource" #leadSource="ngModel"
+                    [(ngModel)]="leadService.selectedLead.leadSource" >
+                  <label for="leadSource">Lead Source</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Lead Status" id="leadStatus" type="text" name="leadStatus" #leadStatus="ngModel"
+                    [(ngModel)]="selectedLead.leadStatus" >
+                  <label for="leadStatus">Lead Status</label>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Notes" id="leadNotes" name="leadNotes" #leadNotes="ngModel" [(ngModel)]="leadService.selectedLead.leadNotes">
+                  <label for="leadNotes">Lead Notes</label>
+                </div>
+              </div>
+
+              <!-- Submit button -->
+
+              <div class="row">
+                <button class="btn btn-custom right" type="button" (click)="resetForm(leadForm)">Reset</button>
+                <button class="btn btn-custom right" type="submit" >Submit Lead</button>
+              </div>
+
+
+
+            </form>
+          </div>
+
+        </div>
+        <div class="col s7">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
