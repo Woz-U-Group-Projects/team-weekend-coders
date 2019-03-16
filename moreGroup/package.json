@@ -1,0 +1,17 @@
+{
+  "name": "moregroup",
+  "version": "1.0.0",
+  "description": "exodus",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0"
+  }
+}
