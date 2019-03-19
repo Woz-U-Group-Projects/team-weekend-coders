@@ -20,6 +20,7 @@ export class LeadService {
 // post lead to mongo
 postLead(lead: LeadModel) {
   console.log('Lead posted successfully');
+  console.table(lead);
   return this.http.post(this.baseURL, lead);
 }
 }

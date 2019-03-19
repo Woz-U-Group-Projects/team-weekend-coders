@@ -1,5 +1,5 @@
 export class LeadModel {
-    LeadOwner: string;
+    leadOwner: string;
     firstName: string;
     lastName: string;
     mobileNumber: number;

@@ -9,7 +9,7 @@ import {LeadService } from '../shared/lead.service';
 })
 export class LeadComponent implements OnInit {
 
-  constructor(private leadService: LeadService) { }
+  constructor(public leadService: LeadService) { }
 
   // reset form on component load
   ngOnInit() {
@@ -20,7 +20,7 @@ export class LeadComponent implements OnInit {
       form.reset();
   }
     this.leadService.selectedLead = {
-      LeadOwner: '',
+      leadOwner: '',
       firstName: '',
       lastName: '',
       mobileNumber: null,
@@ -41,3 +41,5 @@ export class LeadComponent implements OnInit {
 
 
 }
+
+

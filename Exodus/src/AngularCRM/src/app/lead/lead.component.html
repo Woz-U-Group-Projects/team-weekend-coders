@@ -7,7 +7,7 @@
 
             <!-- Submit new lead form -->
             <form #leadForm="ngForm" (ngSubmit)="onSubmit(leadForm)">
-              <input name="LeadOwner" #LeadOwner="ngModel" [(ngModel)]="leadService.selectedLead.LeadOwner" required>
+              <input name="leadOwner" #LeadOwner="ngModel" [(ngModel)]="leadService.selectedLead.leadOwner" required>
 
               <div class="row">
                 <div class="input-field col s6">
@@ -47,7 +47,7 @@
               <div class="row">
                 <div class="input-field col s6">
                   <input placeholder="Lead Status" id="leadStatus" type="text" name="leadStatus" #leadStatus="ngModel"
-                    [(ngModel)]="selectedLead.leadStatus" >
+                    [(ngModel)]="leadService.selectedLead.leadStatus" >
                   <label for="leadStatus">Lead Status</label>
                 </div>
               </div>
