@@ -18,7 +18,7 @@
   <tr *ngFor="let client of clients">
     <td> {{ client.firstName }} {{ client.lastName }} </td>
     <td> {{ client.email }}</td>
-    <td><a routerLink="client/{{ client.id }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"> Details</i></a></td>
+    <td><a routerLink="client/{{ client._id }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"> Details</i></a></td>
   </tr>
 </tbody>
 

@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-6">
     <div class="btn-group pull-right">
-      <a routerLink="/client/edit/{{ id }}" class="btn btn-dark"> Edit
+      <a routerLink="/client/edit/{{ _id }}" class="btn btn-dark"> Edit
       </a>
       <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
     </div>
@@ -18,7 +18,7 @@
   <div class="card-body">
     <div class="row">
       <div class="cold-md-8 col-md-6">
-        <h4>Client ID: {{ client.id }}</h4>
+        <h4>Client ID: {{ client._id }}</h4>
       </div>
       <div class="cold-md-8 col-md-6">
        

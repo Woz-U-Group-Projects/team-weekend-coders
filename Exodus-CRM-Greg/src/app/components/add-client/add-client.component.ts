@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-client.component.css']
 })
 export class AddClientComponent implements OnInit {
+  clients: Client[];
   client: Client = {
     firstName: '',
     lastName: '',
@@ -29,12 +30,14 @@ export class AddClientComponent implements OnInit {
   onSubmit({value, valid}: {value: Client, valid: boolean}) {
     //console.log(value, valid);
     if(!valid) {
-      this.flashMessage.show("Please fill ouu the form correctly", {
+      this.flashMessage.show("Please fill out the form correctly", {
         cssClass: 'alert-danger', timeout: 4000
       }); 
     } else {
       //add new client
-      this.clientService.newClient(value);
+      this.clientService.newClient(value).subscribe(client => {
+        console.log(client)
+      });
 
       //show flash message
       this.flashMessage.show("New client added", {
@@ -43,7 +46,11 @@ export class AddClientComponent implements OnInit {
 
       //redirect to dashboard
       this.router.navigate(['/']);
+      this.clientService.getClients()
+        .subscribe((clients: Client[]) => {
+        this.clients = clients;
+        console.log(this.clients);
+        });
     }
   }
-
 }

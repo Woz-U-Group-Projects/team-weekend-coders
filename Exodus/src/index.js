@@ -16,6 +16,16 @@ const password = 'password1';
 mongoose.connect(`mongodb://${user}:${password}@${server}/${database}`, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
+// CORS Code added by Greg
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 
+    'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+})
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 

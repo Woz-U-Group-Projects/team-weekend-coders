@@ -10,7 +10,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./edit-client.component.css']
 })
 export class EditClientComponent implements OnInit {
-  id: string;
+  _id: string;
   client: Client = {
     firstName: '',
     lastName: '',
@@ -26,9 +26,9 @@ export class EditClientComponent implements OnInit {
 
     ngOnInit() {
       //get id from url
-      this.id = this.route.snapshot.params['id'];
+      this._id = this.route.snapshot.params['id'];
       //get client
-      this.clientService.getClient(this.id).subscribe(client => {
+      this.clientService.getClient(this._id).subscribe(client => {
         this.client = client;
         //console.log(this.client);
       });
@@ -41,13 +41,16 @@ export class EditClientComponent implements OnInit {
         });
       } else {
         // add id to client
-        value.id = this.id;
+        value._id = this._id;
         // update client
-        this.clientService.updateClient(value);
+        this.clientService.updateClient(value).subscribe(client => {
+          console.log(client)
+        });
         this.flashMessage.show('Client updated.', {
           cssClass: 'alert-success', timeout: 4000
         });
-        this.router.navigate([`/client/${this.id}`]);
+        this.router.navigate([`/client/${this._id}`]);
+        this.ngOnInit;
       }
     }
 

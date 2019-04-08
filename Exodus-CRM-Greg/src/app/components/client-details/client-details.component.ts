@@ -10,8 +10,9 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
-  id: string;
+  _id: string;
   client: Client;
+  clients: Client[];
 
   constructor(private clientService: ClientService,
     private router: Router,
@@ -21,21 +22,29 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit() {
     //get id from url
-    this.id = this.route.snapshot.params['id'];
+    this._id = this.route.snapshot.params['id'];
     //get client
-    this.clientService.getClient(this.id).subscribe(client => {
+    this.clientService.getClient(this._id).subscribe(client => {
       this.client = client;
-      //console.log(this.client);
+      console.log(this.client);
     });
   }
 
   onDeleteClick() {
     if(confirm('Are you sure?')) {
-      this.clientService.deleteClient(this.client);
+      this._id = this.route.snapshot.params['id'];
+      this.clientService.deleteClient(this._id).subscribe(message => {
+        console.log(message);
+      });
       this.flashMessage.show('Client removed', {
         cssClass: 'alert-success', timeout: 4000
       });
       this.router.navigate(['/']);
+      this.clientService.getClients()
+      .subscribe((clients: Client[]) => {
+        this.clients = clients;
+        console.log(this.clients);
+      });
     }
   }
 }

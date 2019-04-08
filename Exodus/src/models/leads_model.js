@@ -4,23 +4,27 @@ const Schema = mongoose.Schema;
 const LeadsSchema = new Schema({
     LeadOwner: {
         type: String,
-        required: true
+        required: false
     },
     firstName: {
         type: String,
         required: true
     },
-    mobileNumber: {
-        type: Number,
+    lastName: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
         required: true
     },
     leadSource: {
         type: String,
-        required: true
+        required: false
     },
     leadStatus: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,

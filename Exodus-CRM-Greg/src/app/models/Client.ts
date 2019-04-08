@@ -1,7 +1,10 @@
 export interface Client {
-    id?: string;
+    _id?: string;
     firstName?: string;
     lastName?: string;
     email?: string;
     phone?: string;
+    leadOwner?: string;
+    leadStatus?: string;
+    leadNotes?: string;
 }
