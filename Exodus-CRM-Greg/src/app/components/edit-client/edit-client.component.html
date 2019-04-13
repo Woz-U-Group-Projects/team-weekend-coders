@@ -95,6 +95,23 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label for="lastName">Lead Source</label>
+              <input 
+                type="text"
+                class="form-control"
+                name="leadSource"
+                #clientLastName="ngModel"
+                [ngClass]="{ 'is-invalid':clientLeadSource.errors && clientLeadSource.touched }"
+                [(ngModel)]="client.leadSource"
+                minlength="2"
+              >
+              <div [hidden]="!clientLastName.errors?.minlength" class="invalid-feedback">
+                  Must be at least 2 characters
+              </div>
+            </div>
+
+            
             <input type="submit" value="Submit" class="btn btn-primary btn-block">
 
     </form>
