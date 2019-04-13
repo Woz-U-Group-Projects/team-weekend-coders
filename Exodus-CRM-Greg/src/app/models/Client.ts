@@ -4,7 +4,6 @@ export interface Client {
     lastName?: string;
     email?: string;
     phone?: string;
-    leadSource?: string;
     leadOwner?: string;
     leadStatus?: string;
     leadNotes?: string;
