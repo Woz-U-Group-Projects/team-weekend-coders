@@ -29,7 +29,7 @@ export class ClientService {
     return this.http.post('http://localhost:3001/leads', client);
    }   
 
-   getClient(id: string) {
+   getClient(id: string): Observable<Client> {
     return this.http.get(`http://localhost:3001/leads/${id}`);
    }
 

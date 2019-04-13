@@ -49,7 +49,7 @@ export class AddClientComponent implements OnInit {
       this.clientService.getClients()
         .subscribe((clients: Client[]) => {
         this.clients = clients;
-        console.log(this.clients);
+        //console.log(this.clients);
         });
     }
   }

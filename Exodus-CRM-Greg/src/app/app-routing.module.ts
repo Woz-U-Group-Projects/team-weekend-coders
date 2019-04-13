@@ -25,7 +25,7 @@ const routes: Routes = [
   declarations: [],
   exports: [RouterModule],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [AuthGuard]
 })

@@ -26,7 +26,18 @@ export class ClientDetailsComponent implements OnInit {
     //get client
     this.clientService.getClient(this._id).subscribe(client => {
       this.client = client;
-      console.log(this.client);
+      //console.log(this.client);
+    });
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit called')
+    //get id from url
+    this._id = this.route.snapshot.params['id'];
+    //get client
+    this.clientService.getClient(this._id).subscribe(client => {
+      console.log(client);
+      this.client = client;
     });
   }
 

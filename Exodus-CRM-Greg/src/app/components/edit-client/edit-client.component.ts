@@ -15,7 +15,8 @@ export class EditClientComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    leadSource: ''
   };
 
   constructor(private clientService: ClientService,
@@ -34,6 +35,7 @@ export class EditClientComponent implements OnInit {
       });
     }
 
+
     onSubmit({value, valid}: {value: Client, valid: boolean}) {
       if(!valid) {
         this.flashMessage.show('Please fill out the form correctly.', {
@@ -44,13 +46,17 @@ export class EditClientComponent implements OnInit {
         value._id = this._id;
         // update client
         this.clientService.updateClient(value).subscribe(client => {
-          console.log(client)
+          this.client = client;
         });
         this.flashMessage.show('Client updated.', {
           cssClass: 'alert-success', timeout: 4000
         });
-        this.router.navigate([`/client/${this._id}`]);
-        this.ngOnInit;
+        this.router.navigate(['/']);
+        //this.router.navigate([`/client/${this._id}`]);
+        this.clientService.getClient(this._id)
+          .subscribe((client: Client) => {
+          this.client = client;
+          });
       }
     }
 
