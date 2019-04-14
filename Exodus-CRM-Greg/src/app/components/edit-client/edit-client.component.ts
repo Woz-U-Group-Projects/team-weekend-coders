@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/Client';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-client',
@@ -17,14 +16,16 @@ export class EditClientComponent implements OnInit {
     lastName: '',
     email: '',
     phone: '',
-    leadSource: ''
+    leadSource: '',
+    leadOwner: '',
+    leadStatus: '',
+    leadNotes: ''
   };
 
   constructor(private clientService: ClientService,
     private router: Router,
     private route: ActivatedRoute,
-    private flashMessage: FlashMessagesService,
-    private location: Location
+    private flashMessage: FlashMessagesService
   ) { }
 
     ngOnInit() {
@@ -54,6 +55,8 @@ export class EditClientComponent implements OnInit {
           cssClass: 'alert-success', timeout: 4000
         });
         //this.router.navigate([`/client/${this._id}`]);
+        //this.clientService.getClient(this._id)
+        //  .subscribe(client => this.client = client);
       }
     }
 

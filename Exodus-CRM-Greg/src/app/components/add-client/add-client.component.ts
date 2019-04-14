@@ -15,7 +15,9 @@ export class AddClientComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    leadSource: '',
+    leadStatus: '** new lead **',
   }
 
   disableBalanceOnAdd: boolean = true;
@@ -25,6 +27,9 @@ export class AddClientComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.clientService.getClients()
+      .subscribe(clients => this.clients = clients);
+    console.log(this.clients);
   }
 
   onSubmit({value, valid}: {value: Client, valid: boolean}) {
@@ -35,6 +40,7 @@ export class AddClientComponent implements OnInit {
       }); 
     } else {
       //add new client
+      //this.clients.push(this.client);
       this.clientService.newClient(value).subscribe(client => {
         console.log(client)
       });
@@ -47,6 +53,7 @@ export class AddClientComponent implements OnInit {
       //redirect to dashboard
       this.router.navigate(['/']);
       this.clientService.getClients()
+      .subscribe(clients => this.clients = clients);
     }
   }
 }

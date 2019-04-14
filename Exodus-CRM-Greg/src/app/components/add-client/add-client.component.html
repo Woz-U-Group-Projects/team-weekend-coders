@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6">
     <a routerLink="/" class="btn btn-link">
-    <i class="fa fa-arrow-circle-o-left"></i> Back To Dashboard
+    <i class="fa fa-arrow-circle-o-left"></i> Back To Lead List
   </a>
   </div>
   <div class="col-md-6">
@@ -92,6 +92,26 @@
               </div>
               <div [hidden]="!clientPhone.errors?.minlength" class="invalid-feedback">
                   Phone must be at least 10 characters
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="leadSource">Lead Source</label>
+              <input 
+                type="text"
+                class="form-control"
+                name="leadSource"
+                #clientLeadSource="ngModel"
+                [ngClass]="{ 'is-invalid':clientLeadSource.errors && clientLeadSource.touched }"
+                [(ngModel)]="client.leadSource"
+                minlength="2"
+                required
+              >
+              <div [hidden]="!clientLeadSource.errors?.required" class="invalid-feedback">
+                  Lead source required
+              </div>
+              <div [hidden]="!clientLeadSource.errors?.minlength" class="invalid-feedback">
+                  Must be at least 2 characters
               </div>
             </div>
 
