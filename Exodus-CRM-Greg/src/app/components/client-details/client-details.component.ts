@@ -1,8 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../../services/client.service';
-import { Client } from '../../models/Client';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ClientService
+} from '../../services/client.service';
+import {
+  Client
+} from '../../models/Client';
+import {
+  Router,
+  ActivatedRoute,
+  Params
+} from '@angular/router';
+import {
+  FlashMessagesService
+} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-client-details',
@@ -13,12 +26,13 @@ export class ClientDetailsComponent implements OnInit {
   _id: string;
   client: Client;
   clients: Client[];
+  show = false;
 
   constructor(private clientService: ClientService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private flashMessage: FlashMessagesService
-  ) { }
+              private router: Router,
+              private route: ActivatedRoute,
+              private flashMessage: FlashMessagesService
+  ) {}
 
   ngOnInit() {
     //get id from url
@@ -31,20 +45,21 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   onDeleteClick() {
-    if(confirm('Are you sure?')) {
+    if (confirm('Are you sure?')) {
       this._id = this.route.snapshot.params['id'];
       this.clientService.deleteClient(this._id).subscribe(message => {
         console.log(message);
       });
       this.flashMessage.show('Client removed', {
-        cssClass: 'alert-success', timeout: 4000
+        cssClass: 'alert-success',
+        timeout: 4000
       });
       this.router.navigate(['/']);
       this.clientService.getClients()
-      .subscribe((clients: Client[]) => {
-        this.clients = clients;
-        console.log(this.clients);
-      });
+        .subscribe((clients: Client[]) => {
+          this.clients = clients;
+          console.log(this.clients);
+        });
     }
   }
 }

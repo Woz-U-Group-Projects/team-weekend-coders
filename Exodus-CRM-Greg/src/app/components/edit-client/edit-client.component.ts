@@ -49,7 +49,8 @@ export class EditClientComponent implements OnInit {
         this.flashMessage.show('Client updated.', {
           cssClass: 'alert-success', timeout: 4000
         });
-        this.router.navigate([`/client/${this._id}`]);
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this.router.navigate([`/client/${this._id}`]));
         this.ngOnInit;
       }
     }

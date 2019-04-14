@@ -17,9 +17,9 @@
   <h3 class="card-header">Lead Name: {{ client.firstName }} {{ client.lastName }}</h3>
   <div class="card-body">
     <div class="row">
-      <div class="cold-md-8 col-md-6">
+      <!-- <div class="cold-md-8 col-md-6">
         <h4>Lead ID: {{ client._id }}</h4>
-      </div>
+      </div> -->
       <div class="cold-md-8 col-md-6">
        
       </div>
@@ -33,5 +33,12 @@
       <li class="list-group-item">Lead Status: {{ client.leadStatus }}</li>
       <li class="list-group-item">Lead Notes: {{ client.leadNotes }}</li>
     </ul>
+    <br>
+    <div id="toggleLeadID" class="cold-md-8 col-md-6">
+      <p> Lead ID: </p><button (click)="show = !show">{{show ? 'Hide' : 'Show'}}</button>
+      <div *ngIf="show" style="font-weight: bold">{{ client._id }}</div>
+   </div>
+  
+
   </div>
 </div>
