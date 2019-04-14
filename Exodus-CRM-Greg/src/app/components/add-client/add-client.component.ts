@@ -47,10 +47,6 @@ export class AddClientComponent implements OnInit {
       //redirect to dashboard
       this.router.navigate(['/']);
       this.clientService.getClients()
-        .subscribe((clients: Client[]) => {
-        this.clients = clients;
-        //console.log(this.clients);
-        });
     }
   }
 }

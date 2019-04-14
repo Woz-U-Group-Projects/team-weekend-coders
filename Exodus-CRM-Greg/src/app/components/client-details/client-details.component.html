@@ -6,8 +6,9 @@
   </div>
   <div class="col-md-6">
     <div class="btn-group pull-right">
-      <a routerLink="/client/edit/{{ _id }}" class="btn btn-dark"> Edit
-      </a>
+      <a routerLink="/client/edit/{{ _id }}" class="btn btn-dark"> Edit</a>
+      <button (click)="onEditClick()" class="btn btn-dark"> Edit</button>
+      
       <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
     </div>
   </div>

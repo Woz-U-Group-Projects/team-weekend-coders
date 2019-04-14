@@ -3,6 +3,7 @@ import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/Client';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-client',
@@ -22,7 +23,8 @@ export class EditClientComponent implements OnInit {
   constructor(private clientService: ClientService,
     private router: Router,
     private route: ActivatedRoute,
-    private flashMessage: FlashMessagesService
+    private flashMessage: FlashMessagesService,
+    private location: Location
   ) { }
 
     ngOnInit() {
@@ -45,18 +47,13 @@ export class EditClientComponent implements OnInit {
         // add id to client
         value._id = this._id;
         // update client
-        this.clientService.updateClient(value).subscribe(client => {
-          this.client = client;
+        this.clientService.updateClient(value).subscribe(res => {
+          console.log(res);
         });
         this.flashMessage.show('Client updated.', {
           cssClass: 'alert-success', timeout: 4000
         });
-        this.router.navigate(['/']);
-        //this.router.navigate([`/client/${this._id}`]);
-        this.clientService.getClient(this._id)
-          .subscribe((client: Client) => {
-          this.client = client;
-          });
+        this.router.navigate([`/client/${this._id}`]);
       }
     }
 
