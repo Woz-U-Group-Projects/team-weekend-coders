@@ -33,6 +33,9 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this._id = this.route.snapshot.params['id'];
+    this.clientService.getClient(this._id)
+      .subscribe(client => this.client = client);
     //this.client = this.http.get<{Client}>(`http://localhost:3001/leads/${this.client._id}`);
     console.log('ngAfterVewInit fired');
     console.log(`isUpdatedClient = ${this.clientService.isUpdatedClient}`)
