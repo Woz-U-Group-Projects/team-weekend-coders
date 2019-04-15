@@ -1,0 +1,22 @@
+{
+  "name": "exodus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go": "nodemon src/app.js -e js, hbs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "express": "^4.16.4",
+    "hbs": "^4.0.3",
+    "mongoose": "^5.4.19",
+    "mongoose-timestamp": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
