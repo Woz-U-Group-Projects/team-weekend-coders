@@ -1,0 +1,1 @@
+npm install angular2-flash-messages --save
