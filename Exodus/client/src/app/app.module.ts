@@ -23,6 +23,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ClientService } from './services/client.service';
 import { AuthService } from './services/auth.service';
+import { TasksComponent } from './components/tasks/tasks.component';
+import {TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { AuthService } from './services/auth.service';
     ClientDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { AuthService } from './services/auth.service';
     FlashMessagesModule.forRoot(),
     HttpClientModule
   ],
-  providers: [ClientService, AuthService],
+  providers: [ClientService, AuthService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

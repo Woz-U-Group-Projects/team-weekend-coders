@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, canActivate:[AuthGuard]},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'client/add', component: AddClientComponent, canActivate:[AuthGuard]},
   {path: 'client/edit/:id', component: EditClientComponent, canActivate:[AuthGuard]},
   {path: 'client/:id', component: ClientDetailsComponent, canActivate:[AuthGuard]},
+  {path: 'tasks', component: TasksComponent, canActivate:[AuthGuard]},
   {path: '**', component: NotFoundComponent},
 ]
 

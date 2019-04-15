@@ -16,8 +16,8 @@ export class ClientService {
   client: Client;
   isUpdatedClient: boolean = false;
 
-  constructor(private afs: AngularFirestore, private http: HttpClient) {
-    this.clientsCollection = this.afs.collection('clients', ref => ref.orderBy('lastName', 'asc'));
+  constructor(private http: HttpClient) {
+  
   }
 
   getClients(): Observable<Client[]> {

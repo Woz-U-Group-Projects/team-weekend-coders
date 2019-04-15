@@ -29,14 +29,14 @@ mongoose.connect(`mongodb://${user}:${password}@${server}/${database}`, { useNew
 mongoose.set('useFindAndModify', false);
 
 // CORS Code added by Greg
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept');
-    res.setHeader('Access-Control-Allow-Methods', 
-    'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-})
+//app.use((req, res, next) => {
+//    res.setHeader('Access-Control-Allow-Origin', '*');
+//    res.setHeader('Access-Control-Allow-Headers',
+//    'Origin, X-Requested-With, Content-Type, Accept');
+//    res.setHeader('Access-Control-Allow-Methods', 
+//    'GET, POST, OPTIONS, PUT, DELETE');
+//    next();
+//});
 
 
 app.set('view engine', 'hbs');  // Setting handlebars engine
@@ -50,9 +50,6 @@ app.use(bodyParser.json());
 
 routes(app);
 rIndex(app);
-
-
-
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', "*");          // defines which domains can access our server resources
@@ -93,10 +90,10 @@ app.get('/tasks', (req, res, next) => {
     Task.find()
     .then(documents => {
         console.log(documents);
-        res.status(200).json({
-            message: 'Tasks fetched successfully!',
-            tasks: documents
-        });
+        //res.status(200).json({
+        //    message: 'Tasks fetched successfully!',
+        //    tasks: documents
+        res.status(200).json(documents);
     });
 });
 
