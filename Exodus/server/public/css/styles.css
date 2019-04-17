@@ -1,0 +1,25 @@
+
+
+li {
+    display: inline;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between; 
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+   
+}
+
+a:hover {
+    color: dodgerblue;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 1em;
+}

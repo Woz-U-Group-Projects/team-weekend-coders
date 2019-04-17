@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back to Lead List
+    </a>
+  </div>
+  <div class="col-md-6">
+    <div class="btn-group pull-right">
+      <a routerLink="/client/edit/{{ _id }}" class="btn btn-dark"> Edit</a>
+      <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="client" class="card">
+  <h3 class="card-header">Lead Name: {{ client.firstName }} {{ client.lastName }}</h3>
+  <div class="card-body">
+    <div class="row">
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">Lead Email: {{ client.email }}</li>
+      <li class="list-group-item">Lead Phone: {{ client.phone }}</li>
+      <li class="list-group-item">Lead Source: {{ client.leadSource }}</li>
+      <li class="list-group-item">Lead Assigned to: {{ client.leadOwner }}</li>
+      <li class="list-group-item">Lead Status: {{ client.leadStatus }}</li>
+      <li class="list-group-item">Lead Notes: {{ client.leadNotes }}</li>
+    </ul>
+    <!--
+    <p class="pull-right">Lead ID: {{ client._id }}</p>
+    -->
+  </div>
+</div>

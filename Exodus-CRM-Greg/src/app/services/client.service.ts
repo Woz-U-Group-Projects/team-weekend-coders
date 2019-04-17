@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http'
 
 import { Client } from '../models/Client';
-import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +12,38 @@ import { stringify } from '@angular/compiler/src/util';
 export class ClientService {
   clientsCollection: AngularFirestoreCollection<Client>;
   clientDoc: AngularFirestoreDocument<Client>;
-  clients: Client[] = [];
+  clients: Client[];
   client: Client;
-  
+  isUpdatedClient: boolean = false;
+
   constructor(private afs: AngularFirestore, private http: HttpClient) {
     this.clientsCollection = this.afs.collection('clients', ref => ref.orderBy('lastName', 'asc'));
+  }
+
+  getClients(): Observable<Client[]> {
+    return this.http.get<Client[]>('http://localhost:3001/leads');
    }
 
-  getClients() {
-    return this.http.get('http://localhost:3001/leads');
-   }
-
-   newClient(client: Client) {
+  newClient(client: Client) {
     console.log(JSON.stringify(client));
     return this.http.post('http://localhost:3001/leads', client);
    }   
 
-   getClient(id: string) {
-    return this.http.get(`http://localhost:3001/leads/${id}`);
+   getClient(id: string): Observable<Client> {
+    return this.http.get<Client>(`http://localhost:3001/leads/${id}`);
    }
 
    updateClient(client: Client) {
+     this.isUpdatedClient = true;
      return this.http.put(`http://localhost:3001/leads/${client._id}`, client);
    }
 
    deleteClient(id: string) {
      return this.http.delete(`http://localhost:3001/leads/${id}`);
+   }
+
+   SwitchIsUpdatedClient() {
+     this.isUpdatedClient = !this.isUpdatedClient;
+     console.log(this.isUpdatedClient);
    }
 }

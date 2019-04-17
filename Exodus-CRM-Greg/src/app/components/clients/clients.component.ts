@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 
 import { Client } from '../../models/Client';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-clients',
@@ -10,15 +11,18 @@ import { Client } from '../../models/Client';
 })
 export class ClientsComponent implements OnInit {
   clients: Client[];
-  totalOwed: number;
+  private clientsSub: Subscription;
 
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
     this.clientService.getClients()
-    .subscribe((clients: Client[]) => {
-      this.clients = clients;
-      console.log(this.clients);
-    });
+      .subscribe(clients => this.clients = clients);
+    //this.clientsSub = this.clientService.getClientUpdateListener()
+    //  .subscribe((clients: Client[]) => {
+    //    this.clients = clients;
+    //    console.log(clients);
+    //  });
+      //console.log(this.clients);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/Client';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -15,7 +15,11 @@ export class EditClientComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    leadSource: '',
+    leadOwner: '',
+    leadStatus: '',
+    leadNotes: ''
   };
 
   constructor(private clientService: ClientService,
@@ -34,6 +38,7 @@ export class EditClientComponent implements OnInit {
       });
     }
 
+
     onSubmit({value, valid}: {value: Client, valid: boolean}) {
       if(!valid) {
         this.flashMessage.show('Please fill out the form correctly.', {
@@ -43,15 +48,21 @@ export class EditClientComponent implements OnInit {
         // add id to client
         value._id = this._id;
         // update client
-        this.clientService.updateClient(value).subscribe(client => {
-          console.log(client)
+        this.clientService.updateClient(value).subscribe(res => {
+          console.log(res);
         });
         this.flashMessage.show('Client updated.', {
           cssClass: 'alert-success', timeout: 4000
         });
+<<<<<<< HEAD
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigate([`/client/${this._id}`]));
         this.ngOnInit;
+=======
+        //this.router.navigate([`/client/${this._id}`]);
+        //this.clientService.getClient(this._id)
+        //  .subscribe(client => this.client = client);
+>>>>>>> 67f55c13e5d7ec54efd5f5a5e44af1165425f8c6
       }
     }
 
