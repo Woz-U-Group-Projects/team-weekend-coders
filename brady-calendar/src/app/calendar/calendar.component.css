@@ -1,0 +1,22 @@
+h3 {
+    margin: 0 0 10px;
+}
+  
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+#dayViewDate {
+  font-size: 150%
+}
+
+#backToCalendarBtn {
+  float: right;
+}
+
+#monthHeader {
+  text-align: center;
+  font-size: 150%;
+  padding-bottom: 2em;
+}
