@@ -21,25 +21,30 @@ export class ClientService {
   }
 
   getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>('http://localhost:3001/leads');
+    //return this.http.get<Client[]>('http://localhost:3001/leads');
+    return this.http.get<Client[]>('leads');
    }
 
   newClient(client: Client) {
     console.log(JSON.stringify(client));
-    return this.http.post('http://localhost:3001/leads', client);
+    //return this.http.post('http://localhost:3001/leads', client);
+    return this.http.post('leads', client);
    }   
 
    getClient(id: string): Observable<Client> {
-    return this.http.get<Client>(`http://localhost:3001/leads/${id}`);
+    //return this.http.get<Client>(`http://localhost:3001/leads/${id}`);
+    return this.http.get<Client>(`leads/${id}`);
    }
 
    updateClient(client: Client) {
      this.isUpdatedClient = true;
-     return this.http.put(`http://localhost:3001/leads/${client._id}`, client);
+     //return this.http.put(`http://localhost:3001/leads/${client._id}`, client);
+     return this.http.put(`leads/${client._id}`, client);
    }
 
    deleteClient(id: string) {
-     return this.http.delete(`http://localhost:3001/leads/${id}`);
+     //return this.http.delete(`http://localhost:3001/leads/${id}`);
+     return this.http.delete(`leads/${id}`);
    }
 
    SwitchIsUpdatedClient() {
