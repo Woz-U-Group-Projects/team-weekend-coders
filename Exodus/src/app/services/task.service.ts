@@ -16,7 +16,10 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>('http://localhost:3001/tasks');
+    //1st return for local development
+    return this.http.get<Task[]>('http://localhost:8080/tasks');
+    //2nd return for heroku deployment
+    //return this.http.get<Task[]>('tasks');
    }
 
 
