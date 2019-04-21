@@ -22,43 +22,38 @@ export class ClientService {
 
   getClients(): Observable<Client[]> {
     //1st return for local development
-    return this.http.get<Client[]>('http://localhost:8080/leads');
+    //return this.http.get<Client[]>('http://localhost:8080/leads');
     //2nd return for heroku deployment
-    //return this.http.get<Client[]>('leads');
+    return this.http.get<Client[]>('leads');
    }
 
   newClient(client: Client) {
     console.log(JSON.stringify(client));
     //1st return for local development
-    return this.http.post('http://localhost:8080/leads', client);
+    //return this.http.post('http://localhost:8080/leads', client);
     //2nd return for heroku deployment
-    //return this.http.post('leads', client);
+    return this.http.post('leads', client);
    }   
 
   getClient(id: string): Observable<Client> {
     //1st return for local development
-    return this.http.get<Client>(`http://localhost:8080/leads/${id}`);
+    //return this.http.get<Client>(`http://localhost:8080/leads/${id}`);
     //2nd return for heroku deployment
-    //return this.http.get<Client>(`leads/${id}`);
+    return this.http.get<Client>(`leads/${id}`);
    }
 
   updateClient(client: Client) {
      this.isUpdatedClient = true;
     //1st return for local development
-    return this.http.put(`http://localhost:8080/leads/${client._id}`, client);
+    //return this.http.put(`http://localhost:8080/leads/${client._id}`, client);
     //2nd return for heroku deployment
-    //return this.http.put(`leads/${client._id}`, client);
+    return this.http.put(`leads/${client._id}`, client);
    }
 
   deleteClient(id: string) {
-     //1st return for local development
-     return this.http.delete(`http://localhost:8080/leads/${id}`);
-     //2nd return for heroku deployment
-     //return this.http.delete(`leads/${id}`);
-   }
-
-  SwitchIsUpdatedClient() {
-     this.isUpdatedClient = !this.isUpdatedClient;
-     console.log(this.isUpdatedClient);
+    //1st return for local development
+    //return this.http.delete(`http://localhost:8080/leads/${id}`);
+    //2nd return for heroku deployment
+    return this.http.delete(`leads/${id}`);
    }
 }

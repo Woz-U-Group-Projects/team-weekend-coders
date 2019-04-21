@@ -20,8 +20,6 @@ export class AddClientComponent implements OnInit {
     leadStatus: '** new lead **',
   }
 
-  disableBalanceOnAdd: boolean = true;
-
   constructor(private flashMessage: FlashMessagesService,
     private clientService: ClientService,
     private router: Router) { }

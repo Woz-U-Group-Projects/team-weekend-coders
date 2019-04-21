@@ -103,17 +103,12 @@ app.delete('/tasks/:id', (req, res, next) => {
    Task.deleteOne({ _id: req.params.id }).then(result => {
        console.log(result);
        res.status(200).json({message: "Delete successful!"});
-   })
+   });
 });
 
 
-app.put('/tasks/:id', (req, res, next) => {
-    const task = new Task({
-        _id: req.body.id,
-        title: req.body.title,
-        content: req.body.content
-    })
-    Task.updateOne({_id: req.params.id}, task).then(result => {
+app.put('/tasks/:id', (req, res) => {
+    Task.updateOne({_id: req.params.id}, req.body).then(result => {
         console.log(result);
         res.status(200).json({message: "Updated!"});
     });

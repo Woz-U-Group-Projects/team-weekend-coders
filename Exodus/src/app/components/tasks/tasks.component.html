@@ -2,7 +2,11 @@
   <div class="col-md-6">
     <h2><i class="fa fa-tasks"></i> Tasks</h2>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-2">
+      <a routerLink="/task/add" class="btn btn-success btn-block">
+        <i class="fa fa-plus"> New</i></a>
     
   </div>
 </div>
@@ -18,8 +22,11 @@
   <tr *ngFor="let task of tasks">
     <td> {{ task.title }} </td>
     <td> {{ task.content }}</td>
-    <!--<td><a routerLink="client/{{ client._id }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"> Details</i></a></td>-->
+    <td><a routerLink="/tasks/task/edit/{{ task._id }}" class="btn btn-dark btn-sm"><i class="fa fa-edit fa-xs"></i></a></td>
+    <td><button (click)="onDeleteClick(task._id)" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-xs"></i></button></td>
+    <!--<td><a routerLink="task/{{ task._id }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"> Details</i></a></td>-->
   </tr>
+  
 </tbody>
 
 </table>

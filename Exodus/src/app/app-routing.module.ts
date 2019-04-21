@@ -8,9 +8,11 @@ import { AddClientComponent } from './components/add-client/add-client.component
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
-
-import { AuthGuard } from './guards/auth.guard';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { AddTaskComponent } from './components/tasks/add-task.component';
+import { EditTaskComponent } from './components/tasks/edit-task.component';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, canActivate:[AuthGuard]},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'client/edit/:id', component: EditClientComponent, canActivate:[AuthGuard]},
   {path: 'client/:id', component: ClientDetailsComponent, canActivate:[AuthGuard]},
   {path: 'tasks', component: TasksComponent, canActivate:[AuthGuard]},
+  {path: 'task/add', component: AddTaskComponent, canActivate:[AuthGuard]},
+  {path: 'tasks/task/edit/:id', component: EditTaskComponent, canActivate:[AuthGuard]},
   {path: '**', component: NotFoundComponent},
 ]
 

@@ -25,6 +25,8 @@ import { ClientService } from './services/client.service';
 import { AuthService } from './services/auth.service';
 import { TasksComponent } from './components/tasks/tasks.component';
 import {TaskService } from './services/task.service';
+import { AddTaskComponent } from './components/tasks/add-task.component';
+import { EditTaskComponent } from './components/tasks/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {TaskService } from './services/task.service';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    TasksComponent
+    TasksComponent,
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
